@@ -11,5 +11,5 @@ spec:
     image: hashicorp/http-echo:1.0.0
     args: ["-text=hello from edge"]
     ports:
-    - containerPort: 5679
+    - containerPort: 5678
   restartPolicy: Always
