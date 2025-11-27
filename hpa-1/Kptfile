@@ -1,8 +1,0 @@
-apiVersion: kpt.dev/v1
-kind: Kptfile
-metadata:
-  name: hpa-1
-  annotations:
-    config.kubernetes.io/local-config: "true"
-info:
-  description: 扩缩容
