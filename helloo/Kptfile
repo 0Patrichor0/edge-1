@@ -1,0 +1,21 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /helloo
+  name: helloo
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|helloo'
+upstream:
+  type: git
+  git:
+    repo: https://github.com/0Patrichor0/edge-down.git
+    directory: edge-b
+    ref: main
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/0Patrichor0/edge-down.git
+    directory: edge-b
+    ref: main
+    commit: 5114e612d9da3cfff407ebf1f6e9de5283a25d75
+info:
+  description: rbac blueprint for testing
