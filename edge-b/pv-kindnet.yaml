@@ -1,7 +1,7 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata: # kpt-merge: /example-kindnet
-  name: edge-b-kindnet
+  name: edge-b-b-kindnet
   annotations:
     internal.kpt.dev/upstream-identifier: 'config.porch.kpt.dev|PackageVariant|default|example-kindnet'
 spec:
@@ -12,7 +12,7 @@ spec:
     repo: catalog-infra-capi
     workspaceName: main
   downstream:
-    package: edge-b-kindnet
+    package: edge-b-b-kindnet
     repo: mgmt-staging
   injectors:
   - kind: WorkloadCluster

@@ -1,7 +1,7 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata: # kpt-merge: /example-crds
-  name: edge-b-crds
+  name: edge-b-b-crds
   annotations:
     internal.kpt.dev/upstream-identifier: 'config.porch.kpt.dev|PackageVariant|default|example-crds'
 spec:
@@ -12,7 +12,7 @@ spec:
     repo: catalog-nephio-core
     workspaceName: main
   downstream:
-    package: edge-b-crds
+    package: edge-b-b-crds
     repo: mgmt-staging
   injectors:
   - kind: WorkloadCluster

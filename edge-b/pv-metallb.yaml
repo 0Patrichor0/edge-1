@@ -1,7 +1,7 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata: # kpt-merge: /example-metallb
-  name: edge-b-metallb
+  name: edge-b-b-metallb
   annotations:
     internal.kpt.dev/upstream-identifier: 'config.porch.kpt.dev|PackageVariant|default|example-metallb'
 spec:
@@ -12,7 +12,7 @@ spec:
     repo: catalog-distros-sandbox
     workspaceName: main
   downstream:
-    package: edge-b-metallb
+    package: edge-b-b-metallb
     repo: mgmt-staging
   injectors:
   - kind: WorkloadCluster
