@@ -1,7 +1,7 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata: # kpt-merge: /example-rootsync
-  name: edge-b-rootsync
+  name: edge-b-b-rootsync
   annotations:
     internal.kpt.dev/upstream-identifier: 'config.porch.kpt.dev|PackageVariant|default|example-rootsync'
 spec:
@@ -12,7 +12,7 @@ spec:
     repo: catalog-nephio-optional
     workspaceName: main
   downstream:
-    package: edge-b-rootsync
+    package: edge-b-b-rootsync
     repo: mgmt-staging
   injectors:
   - kind: WorkloadCluster

@@ -1,7 +1,7 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata: # kpt-merge: /example-repo
-  name: edge-b-repo
+  name: edge-b-b-repo
   annotations:
     internal.kpt.dev/upstream-identifier: 'config.porch.kpt.dev|PackageVariant|default|example-repo'
 spec:
@@ -12,7 +12,7 @@ spec:
     repo: catalog-distros-sandbox
     workspaceName: main
   downstream:
-    package: edge-b-repo
+    package: edge-b-b-repo
     repo: mgmt
   injectors:
   - kind: WorkloadCluster
