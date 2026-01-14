@@ -1,0 +1,21 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /hello-demo
+  name: hello-demo
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|hello-demo'
+upstream:
+  type: git
+  git:
+    repo: https://github.com/0Patrichor0/blueprint.git
+    directory: hello-demo
+    ref: main
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/0Patrichor0/blueprint.git
+    directory: hello-demo
+    ref: main
+    commit: bf33e9de4af400a7c69babb563d71ff9a0f0b83b
+info:
+  description: ' blueprint for testing'
