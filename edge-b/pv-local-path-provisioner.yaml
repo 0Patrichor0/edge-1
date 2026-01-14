@@ -1,7 +1,7 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata: # kpt-merge: /example-local-path-provisioner
-  name: edge-b-local-path-provisioner
+  name: edge-b-b-local-path-provisioner
   annotations:
     internal.kpt.dev/upstream-identifier: 'config.porch.kpt.dev|PackageVariant|default|example-local-path-provisioner'
 spec:
@@ -12,7 +12,7 @@ spec:
     repo: catalog-infra-capi
     workspaceName: main
   downstream:
-    package: edge-b-local-path-provisioner
+    package: edge-b-b-local-path-provisioner
     repo: mgmt-staging
   injectors:
   - kind: WorkloadCluster

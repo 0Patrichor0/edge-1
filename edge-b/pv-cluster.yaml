@@ -1,7 +1,7 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata: # kpt-merge: /example-cluster
-  name: edge-b-cluster
+  name: edge-b-b-cluster
   annotations:
     internal.kpt.dev/upstream-identifier: 'config.porch.kpt.dev|PackageVariant|default|example-cluster'
 spec:
@@ -12,7 +12,7 @@ spec:
     repo: catalog-infra-capi
     workspaceName: main
   downstream:
-    package: edge-b-cluster
+    package: edge-b-b-cluster
     repo: mgmt
   injectors:
   - kind: WorkloadCluster
