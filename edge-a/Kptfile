@@ -1,0 +1,19 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /edge-a
+  name: edge-a
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|edge-a'
+upstream:
+  type: git
+  git:
+    repo: https://github.com/0Patrichor0/blueprint.git
+    directory: hello-demo
+    ref: main
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/0Patrichor0/blueprint.git
+    directory: hello-demo
+    ref: main
+    commit: b2e35279c72cdbb449b69d680e4a345c2ad8fe89
