@@ -1,0 +1,52 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /oai-cuup-site1
+  name: oai-cuup-site1
+  annotations:
+    config.kubernetes.io/local-config: "true"
+    internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|oai-cuup-site1'
+upstream:
+  type: git
+  git:
+    repo: https://github.com/nephio-project/catalog.git
+    directory: pkg-example-cuup-bp
+    ref: workloads/oai/pkg-example-cuup-bp/v3.0.0
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/nephio-project/catalog.git
+    directory: pkg-example-cuup-bp
+    ref: workloads/oai/pkg-example-cuup-bp/v3.0.0
+    commit: 860d638166adcb7f0af4557e095c40c66c5d9c1f
+info:
+  description: example cuup blueprint package
+  readinessGates:
+  - conditionType: nephio.org.Specializer.specialize
+pipeline:
+  mutators:
+  - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
+    configPath: apply-replacements-owner.yaml
+  - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
+    configPath: apply-replacements-namespace.yaml
+  - image: gcr.io/kpt-fn/set-namespace:v0.4.1
+    configPath: package-context.yaml
+  - image: nephio/nfdeploy-fn:v2.0.0
+  - image: docker.io/nephio/interface-fn:v2.0.0
+  - image: docker.io/nephio/nad-fn:v2.0.0
+  - image: docker.io/nephio/interface-fn:v2.0.0
+  - image: nephio/nfdeploy-fn:v2.0.0
+status:
+  conditions:
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    reason: Failed
+    status: "False"
+    type: nephio.org.Specializer.specialize
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.e1
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.f1u
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n3
