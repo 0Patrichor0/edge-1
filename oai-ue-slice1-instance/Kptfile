@@ -20,3 +20,11 @@ upstreamLock:
     commit: 860d638166adcb7f0af4557e095c40c66c5d9c1f
 info:
   description: example oai ue sim blueprint package
+pipeline:
+  mutators:
+  - name: PackageVariant.intent-007-oai-ue-edge-1..0
+    image: gcr.io/kpt-fn/apply-setters:v0.2
+    configMap:
+      capacity: "1"
+      sd: "000001"
+      sst: "1"
