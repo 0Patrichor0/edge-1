@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata: # kpt-merge: /free5gc
-  name: free5gc
-  annotations:
-    internal.kpt.dev/upstream-identifier: '|Namespace|default|free5gc'
