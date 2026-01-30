@@ -21,9 +21,17 @@ upstreamLock:
 info:
   description: example upf blueprint package
   readinessGates:
+  - conditionType: config.injection.WorkloadCluster.workload-cluster
   - conditionType: nephio.org.Specializer.specialize
 pipeline:
   mutators:
+  - name: PackageVariant.intent-206-free5gc-upf-slice4..0
+    image: gcr.io/kpt-fn/apply-setters:v0.2
+    configMap:
+      clusterName: edge-1
+      capacity: "8"
+      sd: "000001"
+      sst: "1"
   - image: ghcr.io/kptdev/krm-functions-catalog/apply-replacements:v0.1.1
     configPath: apply-replacements-owner.yaml
   - image: ghcr.io/kptdev/krm-functions-catalog/apply-replacements:v0.1.1
@@ -39,10 +47,17 @@ pipeline:
   - image: docker.io/nephio/nfdeploy-fn:latest
 status:
   conditions:
+  - type: config.injection.WorkloadCluster.workload-cluster
+    status: "False"
+    message: no injectors defined
+    reason: NoResourceSelected
   - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
     reason: Failed
     status: "False"
     type: nephio.org.Specializer.specialize
+  - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
+    status: "False"
+    type: req.nephio.org/v1alpha1.DataNetwork.internet
   - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
     status: "False"
     type: req.nephio.org/v1alpha1.Interface.n3
@@ -55,6 +70,3 @@ status:
   - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
     status: "False"
     type: req.nephio.org/v1alpha1.Interface.sbi
-  - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
-    status: "False"
-    type: req.nephio.org/v1alpha1.DataNetwork.internet
