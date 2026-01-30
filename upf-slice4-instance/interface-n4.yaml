@@ -1,0 +1,14 @@
+apiVersion: req.nephio.org/v1alpha1
+kind: Interface
+metadata: # kpt-merge: /n4
+  name: n4
+  annotations:
+    config.kubernetes.io/local-config: "true"
+    specializer.nephio.org/owner: workload.nephio.org/v1alpha1.NFDeployment.upf-edge-1-1
+    specializer.nephio.org/namespace: upf-slice4-instance
+    internal.kpt.dev/upstream-identifier: 'req.nephio.org|Interface|default|n4'
+spec:
+  networkInstance:
+    name: vpc-internal
+  cniType: macvlan
+  attachmentType: vlan
