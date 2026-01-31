@@ -1,0 +1,62 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /free5gc-smf
+  name: free5gc-smf
+  annotations:
+    config.kubernetes.io/local-config: "true"
+    internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|free5gc-smf'
+upstream:
+  type: git
+  git:
+    repo: https://github.com/nephio-project/catalog.git
+    directory: pkg-example-smf-bp
+    ref: main
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/nephio-project/catalog.git
+    directory: pkg-example-smf-bp
+    ref: main
+    commit: 8d7ad7365fa803b8e942e98d7f9c9d4310c7f032
+info:
+  description: example smf blueprint package
+  readinessGates:
+  - conditionType: config.injection.WorkloadCluster.workload-cluster
+  - conditionType: nephio.org.Specializer.specialize
+pipeline:
+  mutators:
+  - image: ghcr.io/kptdev/krm-functions-catalog/apply-replacements:v0.1.1
+    configPath: apply-replacements-owner.yaml
+  - image: ghcr.io/kptdev/krm-functions-catalog/apply-replacements:v0.1.1
+    configPath: apply-replacements-namespace.yaml
+  - image: ghcr.io/kptdev/krm-functions-catalog/set-namespace:v0.4.1
+    configPath: cm-namespace.yaml
+  - image: docker.io/nephio/nfdeploy-fn:latest
+  - image: docker.io/nephio/interface-fn:latest
+  - image: docker.io/nephio/dnn-fn:latest
+  - image: docker.io/nephio/nad-fn:latest
+  - image: docker.io/nephio/dnn-fn:latest
+  - image: docker.io/nephio/interface-fn:latest
+  - image: docker.io/nephio/nfdeploy-fn:latest
+status:
+  conditions:
+  - type: config.injection.WorkloadCluster.workload-cluster
+    status: "True"
+    message: injected resource "edge-1" from cluster
+    reason: ConfigInjected
+  - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
+    reason: Failed
+    status: "False"
+    type: nephio.org.Specializer.specialize
+  - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
+    status: "False"
+    type: req.nephio.org/v1alpha1.DataNetwork.internet
+  - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n11
+  - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n4
+  - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.sbi
