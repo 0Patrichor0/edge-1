@@ -1,9 +1,18 @@
 apiVersion: workload.nephio.org/v1alpha1
 kind: NFDeployment
-metadata: # kpt-merge: upf-example/upf-example
-  name: upf-example
-  namespace: upf-slice1-instance
+metadata:
+  name: upf-edge-1-1
+  namespace: upf-slice4-instance
   annotations:
     internal.kpt.dev/upstream-identifier: 'workload.nephio.org|NFDeployment|upf-example|upf-example'
 spec:
   provider: upf.free5gc.io
+  interfaces:
+  - name: n4
+    # 下面这个字段名在不同版本里可能叫 networkInstance / network / net-attach-def
+    # 你用 kubectl explain nfdeployment.spec --recursive 确认一下
+    networkInstance: n4
+  - name: n3
+    networkInstance: n3
+  - name: n6
+    networkInstance: n6
