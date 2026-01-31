@@ -2,7 +2,7 @@ apiVersion: workload.nephio.org/v1alpha1
 kind: NFDeployment
 metadata:
   name: upf-edge-1-1
-  namespace: upf-slice4-instance
+  namespace: upf-slice1-instance
   annotations:
     internal.kpt.dev/upstream-identifier: 'workload.nephio.org|NFDeployment|upf-example|upf-example'
 spec:
