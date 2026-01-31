@@ -2,17 +2,23 @@ apiVersion: workload.nephio.org/v1alpha1
 kind: NFDeployment
 metadata:
   name: upf-edge-1-1
-  namespace: upf-slice1-instance
+  namespace: upf-slice4-instance
   annotations:
     internal.kpt.dev/upstream-identifier: 'workload.nephio.org|NFDeployment|upf-example|upf-example'
 spec:
   provider: upf.free5gc.io
+
+  # 这里只保留 CRD 允许的字段：name / ipv4 / ipv6 / vlanID
   interfaces:
   - name: n4
-    # 下面这个字段名在不同版本里可能叫 networkInstance / network / net-attach-def
-    # 你用 kubectl explain nfdeployment.spec --recursive 确认一下
-    networkInstance: n4
   - name: n3
-    networkInstance: n3
   - name: n6
-    networkInstance: n6
+
+  # 用 networkInstances 来绑定“哪个 network instance 包含哪些接口”
+  networkInstances:
+  - name: n4
+    interfaces: ["n4"]
+  - name: n3
+    interfaces: ["n3"]
+  - name: n6
+    interfaces: ["n6"]
