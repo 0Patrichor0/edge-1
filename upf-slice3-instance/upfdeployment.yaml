@@ -1,9 +1,0 @@
-apiVersion: workload.nephio.org/v1alpha1
-kind: NFDeployment
-metadata: # kpt-merge: upf-example/upf-example
-  name: upf-example
-  namespace: upf-slice3-instance
-  annotations:
-    internal.kpt.dev/upstream-identifier: 'workload.nephio.org|NFDeployment|upf-example|upf-example'
-spec:
-  provider: upf.free5gc.io
