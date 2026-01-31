@@ -21,6 +21,7 @@ upstreamLock:
 info:
   description: example smf blueprint package
   readinessGates:
+  - conditionType: config.injection.WorkloadCluster.workload-cluster
   - conditionType: nephio.org.Specializer.specialize
 pipeline:
   mutators:
@@ -39,19 +40,23 @@ pipeline:
   - image: docker.io/nephio/nfdeploy-fn:latest
 status:
   conditions:
-  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+  - type: config.injection.WorkloadCluster.workload-cluster
+    status: "True"
+    message: injected resource "edge-1" from cluster
+    reason: ConfigInjected
+  - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
     reason: Failed
     status: "False"
     type: nephio.org.Specializer.specialize
-  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
-    status: "False"
-    type: req.nephio.org/v1alpha1.Interface.n11
-  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
-    status: "False"
-    type: req.nephio.org/v1alpha1.Interface.n4
-  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
-    status: "False"
-    type: req.nephio.org/v1alpha1.Interface.sbi
-  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+  - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
     status: "False"
     type: req.nephio.org/v1alpha1.DataNetwork.internet
+  - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n11
+  - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n4
+  - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.sbi
