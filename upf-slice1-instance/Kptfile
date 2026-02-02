@@ -21,9 +21,19 @@ upstreamLock:
 info:
   description: example upf blueprint package
   readinessGates:
+  - conditionType: config.injection.WorkloadCluster.workload-cluster
   - conditionType: nephio.org.Specializer.specialize
 pipeline:
   mutators:
+  - name: PackageVariant.intent-203-free5gc-upf-slice1..0
+    image: gcr.io/kpt-fn/apply-setters:v0.2
+    configMap:
+      capacity: "8"
+      cluster-name: edge-1
+      cni-type: macvlan
+      master-interface: eth1
+      sd: "000001"
+      sst: "1"
   - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
     configPath: apply-replacements-owner.yaml
   - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
@@ -39,10 +49,17 @@ pipeline:
   - image: docker.io/nephio/nfdeploy-fn:v2.0.0
 status:
   conditions:
+  - type: config.injection.WorkloadCluster.workload-cluster
+    status: "False"
+    message: no injectors defined
+    reason: NoResourceSelected
   - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
     reason: Failed
     status: "False"
     type: nephio.org.Specializer.specialize
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    status: "False"
+    type: req.nephio.org/v1alpha1.DataNetwork.internet
   - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
     status: "False"
     type: req.nephio.org/v1alpha1.Interface.n3
@@ -55,6 +72,3 @@ status:
   - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
     status: "False"
     type: req.nephio.org/v1alpha1.Interface.sbi
-  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
-    status: "False"
-    type: req.nephio.org/v1alpha1.DataNetwork.internet
