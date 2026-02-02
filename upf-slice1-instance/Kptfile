@@ -21,9 +21,19 @@ upstreamLock:
 info:
   description: example upf blueprint package
   readinessGates:
+  - conditionType: config.injection.WorkloadCluster.workload-cluster
   - conditionType: nephio.org.Specializer.specialize
 pipeline:
   mutators:
+  - name: PackageVariant.intent-203-free5gc-upf-slice1..0
+    image: gcr.io/kpt-fn/apply-setters:v0.2
+    configMap:
+      capacity: "8"
+      cluster-name: edge-1
+      cni-type: macvlan
+      master-interface: eth1
+      sd: "000001"
+      sst: "1"
   - image: ghcr.io/kptdev/krm-functions-catalog/apply-replacements:v0.1.1
     configPath: apply-replacements-owner.yaml
   - image: ghcr.io/kptdev/krm-functions-catalog/apply-replacements:v0.1.1
@@ -39,68 +49,104 @@ pipeline:
   - image: docker.io/nephio/nfdeploy-fn:latest
 status:
   conditions:
-  - reason: Ready
-    status: "True"
+  - type: config.injection.WorkloadCluster.workload-cluster
+    status: "False"
+    message: no injectors defined
+    reason: NoResourceSelected
+  - message: not ready
+    status: "False"
     type: nephio.org.Specializer.specialize
-  - message: update done
-    status: "True"
-    type: workload.nephio.org/v1alpha1.NFDeployment.upf-edge-1-1-1
-  - message: update for condition
-    status: "False"
-    type: req.nephio.org/v1alpha1.Interface.n3
-  - message: create initial resource
-    status: "False"
-    type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-edge-1-n3-ipv4
-    reason: req.nephio.org/v1alpha1.Interface.n3
-  - message: create initial resource
-    reason: req.nephio.org/v1alpha1.Interface.n3
-    status: "False"
-    type: k8s.cni.cncf.io/v1.NetworkAttachmentDefinition.upf-edge-1-n3
-  - message: create initial resource
-    reason: req.nephio.org/v1alpha1.Interface.n3
-    status: "False"
-    type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-edge-1-n3
-  - message: update for condition
-    status: "False"
-    type: req.nephio.org/v1alpha1.Interface.n4
-  - message: create initial resource
-    status: "False"
-    type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-edge-1-n4-ipv4
-    reason: req.nephio.org/v1alpha1.Interface.n4
-  - message: create initial resource
-    reason: req.nephio.org/v1alpha1.Interface.n4
-    status: "False"
-    type: k8s.cni.cncf.io/v1.NetworkAttachmentDefinition.upf-edge-1-n4
-  - message: create initial resource
-    reason: req.nephio.org/v1alpha1.Interface.n4
-    status: "False"
-    type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-edge-1-n4
-  - message: update for condition
-    status: "False"
-    type: req.nephio.org/v1alpha1.Interface.n6
-  - message: create initial resource
-    status: "False"
-    type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-edge-1-n6-ipv4
-    reason: req.nephio.org/v1alpha1.Interface.n6
-  - message: create initial resource
-    reason: req.nephio.org/v1alpha1.Interface.n6
-    status: "False"
-    type: k8s.cni.cncf.io/v1.NetworkAttachmentDefinition.upf-edge-1-n6
-  - message: create initial resource
-    reason: req.nephio.org/v1alpha1.Interface.n6
-    status: "False"
-    type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-edge-1-n6
-  - message: update done
-    status: "True"
-    type: req.nephio.org/v1alpha1.Interface.sbi
+    reason: Specialize
   - message: update for condition
     status: "False"
     type: req.nephio.org/v1alpha1.DataNetwork.internet
+  - message: update for condition
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n3
+  - message: update for condition
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n4
+  - message: update for condition
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n6
+  - message: update done
+    status: "True"
+    type: req.nephio.org/v1alpha1.Interface.sbi
+  - message: expected a for object but got nil
+    status: "False"
+    type: workload.nephio.org/v1alpha1.NFDeployment.upf-edge-1-1-1
+  - status: "True"
+    type: workload.nephio.org/v1alpha1.NFDeployment.upf-edge-1-1-1-1
+    message: update done
   - message: create initial resource
+    status: "False"
+    type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-edge-1-1-n3-ipv4
+    reason: req.nephio.org/v1alpha1.Interface.n3
+  - message: create initial resource
+    status: "False"
+    type: k8s.cni.cncf.io/v1.NetworkAttachmentDefinition.upf-edge-1-1-n3
+    reason: req.nephio.org/v1alpha1.Interface.n3
+  - message: create initial resource
+    status: "False"
+    type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-edge-1-1-n3
+    reason: req.nephio.org/v1alpha1.Interface.n3
+  - message: create initial resource
+    status: "False"
+    type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-edge-1-1-n4-ipv4
+    reason: req.nephio.org/v1alpha1.Interface.n4
+  - message: create initial resource
+    status: "False"
+    type: k8s.cni.cncf.io/v1.NetworkAttachmentDefinition.upf-edge-1-1-n4
+    reason: req.nephio.org/v1alpha1.Interface.n4
+  - message: create initial resource
+    status: "False"
+    type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-edge-1-1-n4
+    reason: req.nephio.org/v1alpha1.Interface.n4
+  - message: create initial resource
+    reason: req.nephio.org/v1alpha1.Interface.n6
+    status: "False"
+    type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-edge-1-1-n6-ipv4
+  - message: create initial resource
+    reason: req.nephio.org/v1alpha1.Interface.n6
+    status: "False"
+    type: k8s.cni.cncf.io/v1.NetworkAttachmentDefinition.upf-edge-1-1-n6
+  - message: create initial resource
+    status: "False"
+    type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-edge-1-1-n6
+    reason: req.nephio.org/v1alpha1.Interface.n6
+  - message: create initial resource
+    status: "False"
+    type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-edge-1-1-internet-pool1
+    reason: req.nephio.org/v1alpha1.DataNetwork.internet
+  - message: delete resource
     status: "False"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-edge-1-internet-pool1
     reason: req.nephio.org/v1alpha1.DataNetwork.internet
   - message: delete resource
-    reason: workload.nephio.org/v1alpha1.NFDeployment.upf-edge-1
+    reason: req.nephio.org/v1alpha1.Interface.n3
+    status: "False"
+    type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-edge-1-n3-ipv4
+  - message: delete resource
+    reason: req.nephio.org/v1alpha1.Interface.n3
+    status: "False"
+    type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-edge-1-n3
+  - message: delete resource
+    reason: req.nephio.org/v1alpha1.Interface.n4
+    status: "False"
+    type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-edge-1-n4-ipv4
+  - message: delete resource
+    reason: req.nephio.org/v1alpha1.Interface.n4
+    status: "False"
+    type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-edge-1-n4
+  - message: delete resource
+    reason: req.nephio.org/v1alpha1.Interface.n6
+    status: "False"
+    type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-edge-1-n6-ipv4
+  - message: delete resource
+    reason: req.nephio.org/v1alpha1.Interface.n6
+    status: "False"
+    type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-edge-1-n6
+  - message: delete resource
+    reason: workload.nephio.org/v1alpha1.NFDeployment.upf-edge-1-1
     status: "False"
     type: req.nephio.org/v1alpha1.Capacity.dataplane
