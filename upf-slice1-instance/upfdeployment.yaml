@@ -1,7 +1,7 @@
 apiVersion: workload.nephio.org/v1alpha1
 kind: NFDeployment
 metadata: # kpt-merge: example/upf-example
-  name: upf-edge-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1
+  name: upf-edge-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1
   namespace: upf-slice1-instance
   annotations:
     internal.kpt.dev/upstream-identifier: 'workload.nephio.org|NFDeployment|example|upf-example'
