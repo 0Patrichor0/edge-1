@@ -6,5 +6,6 @@ metadata: # kpt-merge: /workload-cluster
     config.kubernetes.io/local-config: "true"
     kpt.dev/config-injection: required
     internal.kpt.dev/upstream-identifier: 'infra.nephio.org|WorkloadCluster|default|workload-cluster'
+    kpt.dev/injected-resource: edge-1
 spec:
-  clusterName: example
+  clusterName: edge-1
