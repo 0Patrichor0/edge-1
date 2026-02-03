@@ -14,4 +14,4 @@ spec:
       nephio.org/cluster-name: edge-1
   networkInstance:
     name: vpc-internal
-status: {}
+status: {prefix: 172.3.0.0/16, gateway: ""}
