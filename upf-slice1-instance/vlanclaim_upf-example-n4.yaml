@@ -10,4 +10,4 @@ metadata:
 spec:
   vlanIndex:
     name: edge-1
-status: {}
+status: {vlanID: 4}
