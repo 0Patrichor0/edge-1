@@ -51,19 +51,19 @@ status:
     status: "False"
     message: no injectors defined
     reason: NoResourceSelected
-  - message: create initial resource
+  - message: 'rpc error: code = Unknown desc = dynamic claim: no available routes based on the selector labels map[nephio.org/address-family:ipv4 nephio.org/cluster-name:edge-1]'
     reason: req.nephio.org/v1alpha1.DataNetwork.internet
     status: "False"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-example-internet-pool1
-  - message: create initial resource
+  - message: 'rpc error: code = Unknown desc = dynamic claim: no available routes based on the selector labels map[nephio.org/address-family:ipv4 nephio.org/cluster-name:edge-1 nephio.org/network-name:n3]'
     reason: req.nephio.org/v1alpha1.Interface.n3
     status: "False"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-example-n3-ipv4
-  - message: create initial resource
+  - message: 'rpc error: code = Unknown desc = dynamic claim: no available routes based on the selector labels map[nephio.org/address-family:ipv4 nephio.org/cluster-name:edge-1]'
     reason: req.nephio.org/v1alpha1.Interface.n4
     status: "False"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-example-n4-ipv4
-  - message: create initial resource
+  - message: 'rpc error: code = Unknown desc = dynamic claim: no available routes based on the selector labels map[nephio.org/address-family:ipv4 nephio.org/cluster-name:edge-1]'
     reason: req.nephio.org/v1alpha1.Interface.n6
     status: "False"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-example-n6-ipv4
@@ -97,17 +97,17 @@ status:
   - message: update done
     status: "True"
     type: req.nephio.org/v1alpha1.Interface.sbi
-  - message: create initial resource
+  - message: update done
     reason: req.nephio.org/v1alpha1.Interface.n3
-    status: "False"
+    status: "True"
     type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-example-n3
-  - message: create initial resource
+  - message: update done
     reason: req.nephio.org/v1alpha1.Interface.n4
-    status: "False"
+    status: "True"
     type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-example-n4
-  - message: create initial resource
+  - message: update done
     reason: req.nephio.org/v1alpha1.Interface.n6
-    status: "False"
+    status: "True"
     type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-example-n6
   - message: update done
     status: "True"
