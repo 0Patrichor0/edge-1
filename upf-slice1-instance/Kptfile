@@ -51,48 +51,48 @@ status:
     status: "False"
     message: no injectors defined
     reason: NoResourceSelected
-  - message: 'rpc error: code = Unknown desc = db not initialized: { default vpc-internet    }'
+  - message: update done
     reason: req.nephio.org/v1alpha1.DataNetwork.internet
-    status: "False"
+    status: "True"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-example-internet-pool1
-  - message: 'rpc error: code = Unknown desc = db not initialized: { default vpc-ran    }'
+  - message: update done
     reason: req.nephio.org/v1alpha1.Interface.n3
-    status: "False"
+    status: "True"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-example-n3-ipv4
-  - message: 'rpc error: code = Unknown desc = db not initialized: { default vpc-internal    }'
+  - message: update done
     reason: req.nephio.org/v1alpha1.Interface.n4
-    status: "False"
+    status: "True"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-example-n4-ipv4
-  - message: 'rpc error: code = Unknown desc = db not initialized: { default vpc-internet    }'
+  - message: update done
     reason: req.nephio.org/v1alpha1.Interface.n6
-    status: "False"
+    status: "True"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-example-n6-ipv4
-  - message: create initial resource
+  - message: update done
     reason: req.nephio.org/v1alpha1.Interface.n3
-    status: "False"
+    status: "True"
     type: k8s.cni.cncf.io/v1.NetworkAttachmentDefinition.upf-example-n3
-  - message: create initial resource
+  - message: update done
     reason: req.nephio.org/v1alpha1.Interface.n4
-    status: "False"
+    status: "True"
     type: k8s.cni.cncf.io/v1.NetworkAttachmentDefinition.upf-example-n4
-  - message: create initial resource
+  - message: update done
     reason: req.nephio.org/v1alpha1.Interface.n6
-    status: "False"
+    status: "True"
     type: k8s.cni.cncf.io/v1.NetworkAttachmentDefinition.upf-example-n6
   - reason: Ready
     status: "True"
     type: nephio.org.Specializer.specialize
-  - message: update for condition
-    status: "False"
+  - message: update done
+    status: "True"
     type: req.nephio.org/v1alpha1.DataNetwork.internet
-  - message: update for condition
-    status: "False"
+  - message: update done
+    status: "True"
     type: req.nephio.org/v1alpha1.Interface.n3
-  - message: update for condition
-    status: "False"
+  - message: update done
+    status: "True"
     type: req.nephio.org/v1alpha1.Interface.n4
-  - message: update for condition
-    status: "False"
+  - message: update done
+    status: "True"
     type: req.nephio.org/v1alpha1.Interface.n6
   - message: update done
     status: "True"
