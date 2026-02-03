@@ -236,6 +236,9 @@ status:
   - message: expected a for object but got nil
     status: "False"
     type: workload.nephio.org/v1alpha1.NFDeployment.upf-edge-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1
+  - message: expected a for object but got nil
+    status: "False"
+    type: workload.nephio.org/v1alpha1.NFDeployment.upf-edge-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1
   - message: update done
     status: "True"
-    type: workload.nephio.org/v1alpha1.NFDeployment.upf-edge-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1
+    type: workload.nephio.org/v1alpha1.NFDeployment.upf-edge-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1
