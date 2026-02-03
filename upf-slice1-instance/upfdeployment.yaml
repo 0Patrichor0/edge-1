@@ -1,0 +1,9 @@
+apiVersion: workload.nephio.org/v1alpha1
+kind: NFDeployment
+metadata: # kpt-merge: example/upf-edge-1
+  name: upf-edge-1-1 # kpt-set: upf-${cluster-name}
+  namespace: upf-slice1-instance
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'workload.nephio.org|NFDeployment|example|upf-edge-1'
+spec:
+  provider: upf.free5gc.io
