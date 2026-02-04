@@ -21,7 +21,6 @@ upstreamLock:
 info:
   description: example upf blueprint package
   readinessGates:
-  - conditionType: config.injection.WorkloadCluster.workload-cluster
   - conditionType: nephio.org.Specializer.specialize
 pipeline:
   mutators:
