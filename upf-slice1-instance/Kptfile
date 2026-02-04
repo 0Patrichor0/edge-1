@@ -1,10 +1,10 @@
 apiVersion: kpt.dev/v1
 kind: Kptfile
-metadata: # kpt-merge: /upf-slice2-instance
-  name: upf-slice2-instance
+metadata: # kpt-merge: /upf-slice1-instance
+  name: upf-slice1-instance
   annotations:
     config.kubernetes.io/local-config: "true"
-    internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|upf-slice2-instance'
+    internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|upf-slice1-instance'
 upstream:
   type: git
   git:
@@ -17,14 +17,14 @@ upstreamLock:
     repo: https://github.com/0Patrichor0/catalog.git
     directory: pkg-example-upf-bp
     ref: main
-    commit: c0040de5ab57ee9d0b33973906f44d77fcd65e6f
+    commit: 3ccc0d197a2e3e6ee7bee7da8f80ca50ac907ab1
 info:
   description: example upf blueprint package
   readinessGates:
   - conditionType: nephio.org.Specializer.specialize
 pipeline:
   mutators:
-  - name: PackageVariant.intent-203-free5gc-upf-slice2..0
+  - name: PackageVariant.intent-203-free5gc-upf-slice1..0
     image: gcr.io/kpt-fn/apply-setters:v0.2
     configMap:
       capacity: "8"
@@ -43,67 +43,63 @@ pipeline:
   - image: docker.io/nephio/nad-fn:latest
 status:
   conditions:
-  - type: config.injection.WorkloadCluster.workload-cluster
-    status: "False"
-    message: no injectors defined
-    reason: NoResourceSelected
-  - message: update done
+  - message: create initial resource
     reason: req.nephio.org/v1alpha1.DataNetwork.internet
-    status: "True"
+    status: "False"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-example-internet-pool1
-  - message: update done
+  - message: create initial resource
     reason: req.nephio.org/v1alpha1.Interface.n3
-    status: "True"
+    status: "False"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-example-n3-ipv4
-  - message: update done
+  - message: create initial resource
     reason: req.nephio.org/v1alpha1.Interface.n4
-    status: "True"
+    status: "False"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-example-n4-ipv4
-  - message: update done
+  - message: create initial resource
     reason: req.nephio.org/v1alpha1.Interface.n6
-    status: "True"
+    status: "False"
     type: ipam.resource.nephio.org/v1alpha1.IPClaim.upf-example-n6-ipv4
-  - message: update done
+  - message: create initial resource
     reason: req.nephio.org/v1alpha1.Interface.n3
-    status: "True"
+    status: "False"
     type: k8s.cni.cncf.io/v1.NetworkAttachmentDefinition.upf-example-n3
-  - message: update done
+  - message: create initial resource
     reason: req.nephio.org/v1alpha1.Interface.n4
-    status: "True"
+    status: "False"
     type: k8s.cni.cncf.io/v1.NetworkAttachmentDefinition.upf-example-n4
-  - message: update done
+  - message: create initial resource
     reason: req.nephio.org/v1alpha1.Interface.n6
-    status: "True"
+    status: "False"
     type: k8s.cni.cncf.io/v1.NetworkAttachmentDefinition.upf-example-n6
   - reason: Ready
     status: "True"
     type: nephio.org.Specializer.specialize
-  - message: update done
-    status: "True"
+  - message: update for condition
+    status: "False"
     type: req.nephio.org/v1alpha1.DataNetwork.internet
-  - message: update done
-    status: "True"
+  - message: update for condition
+    status: "False"
     type: req.nephio.org/v1alpha1.Interface.n3
-  - message: update done
-    status: "True"
+  - message: update for condition
+    status: "False"
     type: req.nephio.org/v1alpha1.Interface.n4
-  - message: update done
-    status: "True"
+  - message: update for condition
+    status: "False"
     type: req.nephio.org/v1alpha1.Interface.n6
   - message: update done
     status: "True"
     type: req.nephio.org/v1alpha1.Interface.sbi
-  - message: update done
+  - message: create initial resource
     reason: req.nephio.org/v1alpha1.Interface.n3
-    status: "True"
+    status: "False"
     type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-example-n3
-  - message: update done
+  - message: create initial resource
     reason: req.nephio.org/v1alpha1.Interface.n4
-    status: "True"
+    status: "False"
     type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-example-n4
-  - message: update done
+  - message: create initial resource
     reason: req.nephio.org/v1alpha1.Interface.n6
-    status: "True"
+    status: "False"
     type: vlan.resource.nephio.org/v1alpha1.VLANClaim.upf-example-n6
   - message: update done
     status: "True"
