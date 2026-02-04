@@ -82,14 +82,14 @@ status:
   - message: update done
     status: "True"
     type: req.nephio.org/v1alpha1.DataNetwork.internet
-  - message: update for condition
-    status: "False"
+  - message: update done
+    status: "True"
     type: req.nephio.org/v1alpha1.Interface.n3
-  - message: update for condition
-    status: "False"
+  - message: update done
+    status: "True"
     type: req.nephio.org/v1alpha1.Interface.n4
-  - message: update for condition
-    status: "False"
+  - message: update done
+    status: "True"
     type: req.nephio.org/v1alpha1.Interface.n6
   - message: update done
     status: "True"
