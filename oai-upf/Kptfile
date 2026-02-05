@@ -43,9 +43,9 @@ pipeline:
 status:
   conditions:
   - type: config.injection.WorkloadCluster.workload-cluster
-    status: "True"
-    message: injected resource "edge-1" from cluster
-    reason: ConfigInjected
+    status: "False"
+    message: no resource matched any injection selector for this injection point
+    reason: NoResourceSelected
   - message: 'spec invalid: mandatory field CNIConfig is missing from ClusterContext'
     reason: Failed
     status: "False"
