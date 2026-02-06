@@ -1,0 +1,64 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /oai-upf
+  name: oai-upf
+  annotations:
+    config.kubernetes.io/local-config: "true"
+    internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|oai-upf'
+upstream:
+  type: git
+  git:
+    repo: https://github.com/OPENAIRINTERFACE/oai-packages.git
+    directory: oai-upf-edge
+    ref: main
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/OPENAIRINTERFACE/oai-packages.git
+    directory: oai-upf-edge
+    ref: main
+    commit: e100e4babf7f860b1d64e9bef388ddf643e105f0
+info:
+  description: example upf blueprint package
+  readinessGates:
+  - conditionType: config.injection.WorkloadCluster.workload-cluster
+  - conditionType: nephio.org.Specializer.specialize
+pipeline:
+  mutators:
+  - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
+    configPath: apply-replacements-owner.yaml
+  - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
+    configPath: apply-replacements-namespace.yaml
+  - image: gcr.io/kpt-fn/set-namespace:v0.4.1
+    configPath: cm-namespace.yaml
+  - image: docker.io/nephio/nfdeploy-fn:latest
+  - image: docker.io/nephio/interface-fn:latest
+  - image: docker.io/nephio/dnn-fn:latest
+  - image: docker.io/nephio/nad-fn:latest
+  - image: docker.io/nephio/dnn-fn:latest
+  - image: docker.io/nephio/interface-fn:latest
+  - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
+    configPath: apply-replacements-namespace.yaml
+  - image: docker.io/nephio/nfdeploy-fn:latest
+status:
+  conditions:
+  - type: config.injection.WorkloadCluster.workload-cluster
+    status: "False"
+    message: no resource matched any injection selector for this injection point
+    reason: NoResourceSelected
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    reason: Failed
+    status: "False"
+    type: nephio.org.Specializer.specialize
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n3
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n4
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n6
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.sbi
