@@ -21,6 +21,7 @@ upstreamLock:
 info:
   description: example upf blueprint package
   readinessGates:
+  - conditionType: config.injection.WorkloadCluster.workload-cluster
   - conditionType: nephio.org.Specializer.specialize
 pipeline:
   mutators:
@@ -41,6 +42,10 @@ pipeline:
   - image: docker.io/nephio/nfdeploy-fn:latest
 status:
   conditions:
+  - type: config.injection.WorkloadCluster.workload-cluster
+    status: "False"
+    message: no resource matched any injection selector for this injection point
+    reason: NoResourceSelected
   - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
     reason: Failed
     status: "False"
