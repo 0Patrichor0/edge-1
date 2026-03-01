@@ -1,0 +1,24 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata: # kpt-merge: /example-configsync
+  name: regional-configsync
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'config.porch.kpt.dev|PackageVariant|default|example-configsync'
+spec:
+  annotations:
+    approval.nephio.org/policy: initial
+  upstream:
+    package: configsync
+    repo: catalog-nephio-core
+    workspaceName: main
+  downstream:
+    package: regional-configsync
+    repo: mgmt-staging
+  injectors:
+  - kind: WorkloadCluster
+    name: regional
+  pipeline:
+    mutators:
+    - image: ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4
+      configMap:
+        nephio.org/cluster-name: regional

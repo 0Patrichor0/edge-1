@@ -1,0 +1,24 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata: # kpt-merge: /example-multus
+  name: regional-multus
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'config.porch.kpt.dev|PackageVariant|default|example-multus'
+spec:
+  annotations:
+    approval.nephio.org/policy: initial
+  upstream:
+    package: multus
+    repo: catalog-infra-capi
+    workspaceName: main
+  downstream:
+    package: regional-multus
+    repo: mgmt-staging
+  injectors:
+  - kind: WorkloadCluster
+    name: regional
+  pipeline:
+    mutators:
+    - image: ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4
+      configMap:
+        nephio.org/cluster-name: regional
