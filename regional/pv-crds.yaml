@@ -1,0 +1,24 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata: # kpt-merge: /example-crds
+  name: regional-crds
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'config.porch.kpt.dev|PackageVariant|default|example-crds'
+spec:
+  annotations:
+    approval.nephio.org/policy: initial
+  upstream:
+    package: workload-crds
+    repo: catalog-nephio-core
+    workspaceName: main
+  downstream:
+    package: regional-crds
+    repo: mgmt-staging
+  injectors:
+  - kind: WorkloadCluster
+    name: regional
+  pipeline:
+    mutators:
+    - image: ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4
+      configMap:
+        nephio.org/cluster-name: regional
