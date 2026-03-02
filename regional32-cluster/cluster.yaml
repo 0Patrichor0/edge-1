@@ -1,10 +1,11 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata: # kpt-merge: default/workload
-  name: example
+  name: regional32
   namespace: default
   annotations:
     internal.kpt.dev/upstream-identifier: 'cluster.x-k8s.io|Cluster|default|workload'
+    nephio.org/cluster-name: regional32
 spec:
   clusterNetwork:
     pods:
