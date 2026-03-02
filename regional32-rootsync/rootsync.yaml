@@ -1,0 +1,16 @@
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata: # kpt-merge: config-management-system/example-cluster-name
+  name: regional32-rootsync
+  namespace: config-management-system
+  annotations:
+    internal.kpt.dev/upstream-identifier: configsync.gke.io|RootSync|config-management-system|example-cluster-name
+spec:
+  sourceFormat: unstructured
+  git:
+    repo: http://172.18.0.200:3000/nephio/regional32-rootsync.git
+    branch: main
+    auth: token
+    secretRef:
+      name: regional32-rootsync-access-token-configsync
+    period: 15s
