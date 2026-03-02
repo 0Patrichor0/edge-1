@@ -5,6 +5,7 @@ metadata: # kpt-merge: local-path-storage/local-path-config
   namespace: local-path-storage
   annotations:
     internal.kpt.dev/upstream-identifier: '|ConfigMap|local-path-storage|local-path-config'
+    nephio.org/cluster-name: regional32
 data:
   config.json: |-
     {

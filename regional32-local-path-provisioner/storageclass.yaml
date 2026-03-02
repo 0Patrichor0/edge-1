@@ -5,6 +5,7 @@ metadata: # kpt-merge: /local-path
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
     internal.kpt.dev/upstream-identifier: 'storage.k8s.io|StorageClass|default|local-path'
+    nephio.org/cluster-name: regional32
 provisioner: rancher.io/local-path
 volumeBindingMode: WaitForFirstConsumer
 reclaimPolicy: Delete

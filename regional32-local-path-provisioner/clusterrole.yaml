@@ -4,6 +4,7 @@ metadata: # kpt-merge: /local-path-provisioner-role
   name: local-path-provisioner-role
   annotations:
     internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|ClusterRole|default|local-path-provisioner-role'
+    nephio.org/cluster-name: regional32
 rules:
 - apiGroups: [""]
   resources: ["nodes", "persistentvolumeclaims", "configmaps"]

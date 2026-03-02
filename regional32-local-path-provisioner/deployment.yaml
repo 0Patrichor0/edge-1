@@ -5,6 +5,7 @@ metadata: # kpt-merge: local-path-storage/local-path-provisioner
   namespace: local-path-storage
   annotations:
     internal.kpt.dev/upstream-identifier: 'apps|Deployment|local-path-storage|local-path-provisioner'
+    nephio.org/cluster-name: regional32
 spec:
   replicas: 1
   selector:
@@ -14,6 +15,8 @@ spec:
     metadata:
       labels:
         app: local-path-provisioner
+      annotations:
+        nephio.org/cluster-name: regional32
     spec:
       serviceAccountName: local-path-provisioner-service-account
       containers:
