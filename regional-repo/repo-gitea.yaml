@@ -1,0 +1,11 @@
+apiVersion: infra.nephio.org/v1alpha1
+kind: Repository
+metadata: # kpt-merge: default/example-cluster-name
+  name: regional
+  namespace: default
+  annotations:
+    internal.kpt.dev/upstream-identifier: infra.nephio.org|Repository|default|example-cluster-name
+    nephio.org/cluster-name: regional
+spec:
+  description: regional repository
+  defaultBranch: main
