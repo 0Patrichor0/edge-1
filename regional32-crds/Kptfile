@@ -5,6 +5,7 @@ metadata: # kpt-merge: /regional32-crds
   annotations:
     config.kubernetes.io/local-config: "true"
     internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|regional32-crds'
+    nephio.org/cluster-name: regional32
 upstream:
   type: git
   git:
@@ -20,3 +21,9 @@ upstreamLock:
     commit: 5e1a968e8cbd09a6b930405e38ee6a2ef066c8eb
 info:
   description: Package for Workload CRDs.
+pipeline:
+  mutators:
+  - name: PackageVariant.regional32-crds..0
+    image: ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4
+    configMap:
+      nephio.org/cluster-name: regional32

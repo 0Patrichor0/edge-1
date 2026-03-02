@@ -4,6 +4,7 @@ metadata: # kpt-merge: /configs.ref.nephio.org
   annotations:
     controller-gen.kubebuilder.io/version: v0.9.2
     internal.kpt.dev/upstream-identifier: 'apiextensions.k8s.io|CustomResourceDefinition|default|configs.ref.nephio.org'
+    nephio.org/cluster-name: regional32
   name: configs.ref.nephio.org
 spec:
   group: ref.nephio.org
