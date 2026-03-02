@@ -6,5 +6,12 @@ metadata: # kpt-merge: /workload-cluster
     config.kubernetes.io/local-config: "true"
     kpt.dev/config-injection: optional
     internal.kpt.dev/upstream-identifier: infra.nephio.org|WorkloadCluster|default|workload-cluster
+    kpt.dev/injected-resource: regional32
+    nephio.org/cluster-name: regional32
 spec:
-  clusterName: example
+  clusterName: regional32
+  cnis:
+  - macvlan
+  - ipvlan
+  - sriov
+  masterInterface: eth1
