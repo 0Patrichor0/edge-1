@@ -8,6 +8,7 @@ metadata: # kpt-merge: /metallb-system
   name: metallb-system
   annotations:
     internal.kpt.dev/upstream-identifier: '|Namespace|default|metallb-system'
+    nephio.org/cluster-name: regional32
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -15,6 +16,7 @@ metadata: # kpt-merge: /addresspools.metallb.io
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.1
     internal.kpt.dev/upstream-identifier: 'apiextensions.k8s.io|CustomResourceDefinition|default|addresspools.metallb.io'
+    nephio.org/cluster-name: regional32
   name: addresspools.metallb.io
 spec:
   conversion:
@@ -190,6 +192,7 @@ metadata: # kpt-merge: /bfdprofiles.metallb.io
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.1
     internal.kpt.dev/upstream-identifier: 'apiextensions.k8s.io|CustomResourceDefinition|default|bfdprofiles.metallb.io'
+    nephio.org/cluster-name: regional32
   name: bfdprofiles.metallb.io
 spec:
   group: metallb.io
@@ -281,6 +284,7 @@ metadata: # kpt-merge: /bgpadvertisements.metallb.io
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.1
     internal.kpt.dev/upstream-identifier: 'apiextensions.k8s.io|CustomResourceDefinition|default|bgpadvertisements.metallb.io'
+    nephio.org/cluster-name: regional32
   name: bgpadvertisements.metallb.io
 spec:
   group: metallb.io
@@ -435,6 +439,7 @@ metadata: # kpt-merge: /bgppeers.metallb.io
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.1
     internal.kpt.dev/upstream-identifier: 'apiextensions.k8s.io|CustomResourceDefinition|default|bgppeers.metallb.io'
+    nephio.org/cluster-name: regional32
   name: bgppeers.metallb.io
 spec:
   conversion:
@@ -706,6 +711,7 @@ metadata: # kpt-merge: /communities.metallb.io
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.1
     internal.kpt.dev/upstream-identifier: 'apiextensions.k8s.io|CustomResourceDefinition|default|communities.metallb.io'
+    nephio.org/cluster-name: regional32
   name: communities.metallb.io
 spec:
   group: metallb.io
@@ -759,6 +765,7 @@ metadata: # kpt-merge: /ipaddresspools.metallb.io
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.1
     internal.kpt.dev/upstream-identifier: 'apiextensions.k8s.io|CustomResourceDefinition|default|ipaddresspools.metallb.io'
+    nephio.org/cluster-name: regional32
   name: ipaddresspools.metallb.io
 spec:
   group: metallb.io
@@ -908,6 +915,7 @@ metadata: # kpt-merge: /l2advertisements.metallb.io
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.1
     internal.kpt.dev/upstream-identifier: 'apiextensions.k8s.io|CustomResourceDefinition|default|l2advertisements.metallb.io'
+    nephio.org/cluster-name: regional32
   name: l2advertisements.metallb.io
 spec:
   group: metallb.io
@@ -1045,6 +1053,7 @@ metadata: # kpt-merge: metallb-system/controller
   namespace: metallb-system
   annotations:
     internal.kpt.dev/upstream-identifier: '|ServiceAccount|metallb-system|controller'
+    nephio.org/cluster-name: regional32
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -1055,6 +1064,7 @@ metadata: # kpt-merge: metallb-system/speaker
   namespace: metallb-system
   annotations:
     internal.kpt.dev/upstream-identifier: '|ServiceAccount|metallb-system|speaker'
+    nephio.org/cluster-name: regional32
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -1065,6 +1075,7 @@ metadata: # kpt-merge: metallb-system/controller
   namespace: metallb-system
   annotations:
     internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|Role|metallb-system|controller'
+    nephio.org/cluster-name: regional32
 rules:
 - apiGroups:
   - ""
@@ -1159,6 +1170,7 @@ metadata: # kpt-merge: metallb-system/pod-lister
   namespace: metallb-system
   annotations:
     internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|Role|metallb-system|pod-lister'
+    nephio.org/cluster-name: regional32
 rules:
 - apiGroups:
   - ""
@@ -1239,6 +1251,7 @@ metadata: # kpt-merge: /metallb-system:controller
   name: metallb-system:controller
   annotations:
     internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|ClusterRole|default|metallb-system:controller'
+    nephio.org/cluster-name: regional32
 rules:
 - apiGroups:
   - ""
@@ -1329,6 +1342,7 @@ metadata: # kpt-merge: /metallb-system:speaker
   name: metallb-system:speaker
   annotations:
     internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|ClusterRole|default|metallb-system:speaker'
+    nephio.org/cluster-name: regional32
 rules:
 - apiGroups:
   - ""
@@ -1374,6 +1388,7 @@ metadata: # kpt-merge: metallb-system/controller
   namespace: metallb-system
   annotations:
     internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|RoleBinding|metallb-system|controller'
+    nephio.org/cluster-name: regional32
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -1392,6 +1407,7 @@ metadata: # kpt-merge: metallb-system/pod-lister
   namespace: metallb-system
   annotations:
     internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|RoleBinding|metallb-system|pod-lister'
+    nephio.org/cluster-name: regional32
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -1409,6 +1425,7 @@ metadata: # kpt-merge: /metallb-system:controller
   name: metallb-system:controller
   annotations:
     internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|ClusterRoleBinding|default|metallb-system:controller'
+    nephio.org/cluster-name: regional32
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -1426,6 +1443,7 @@ metadata: # kpt-merge: /metallb-system:speaker
   name: metallb-system:speaker
   annotations:
     internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|ClusterRoleBinding|default|metallb-system:speaker'
+    nephio.org/cluster-name: regional32
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -1442,6 +1460,7 @@ metadata: # kpt-merge: metallb-system/webhook-server-cert
   namespace: metallb-system
   annotations:
     internal.kpt.dev/upstream-identifier: '|Secret|metallb-system|webhook-server-cert'
+    nephio.org/cluster-name: regional32
 ---
 apiVersion: v1
 kind: Service
@@ -1450,6 +1469,7 @@ metadata: # kpt-merge: metallb-system/webhook-service
   namespace: metallb-system
   annotations:
     internal.kpt.dev/upstream-identifier: '|Service|metallb-system|webhook-service'
+    nephio.org/cluster-name: regional32
 spec:
   ports:
   - port: 443
@@ -1467,6 +1487,7 @@ metadata: # kpt-merge: metallb-system/controller
   namespace: metallb-system
   annotations:
     internal.kpt.dev/upstream-identifier: 'apps|Deployment|metallb-system|controller'
+    nephio.org/cluster-name: regional32
 spec:
   revisionHistoryLimit: 3
   selector:
@@ -1478,6 +1499,7 @@ spec:
       annotations:
         prometheus.io/port: "7472"
         prometheus.io/scrape: "true"
+        nephio.org/cluster-name: regional32
       labels:
         app: metallb
         component: controller
@@ -1551,6 +1573,7 @@ metadata: # kpt-merge: metallb-system/speaker
   namespace: metallb-system
   annotations:
     internal.kpt.dev/upstream-identifier: 'apps|DaemonSet|metallb-system|speaker'
+    nephio.org/cluster-name: regional32
 spec:
   selector:
     matchLabels:
@@ -1561,6 +1584,7 @@ spec:
       annotations:
         prometheus.io/port: "7472"
         prometheus.io/scrape: "true"
+        nephio.org/cluster-name: regional32
       labels:
         app: metallb
         component: speaker
@@ -1650,6 +1674,7 @@ metadata: # kpt-merge: /metallb-webhook-configuration
   name: metallb-webhook-configuration
   annotations:
     internal.kpt.dev/upstream-identifier: 'admissionregistration.k8s.io|ValidatingWebhookConfiguration|default|metallb-webhook-configuration'
+    nephio.org/cluster-name: regional32
 webhooks:
 - admissionReviewVersions:
   - v1
