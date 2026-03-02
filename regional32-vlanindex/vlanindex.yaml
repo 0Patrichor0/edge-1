@@ -1,0 +1,9 @@
+apiVersion: vlan.resource.nephio.org/v1alpha1
+kind: VLANIndex
+metadata: # kpt-merge: default/example-cluster-name
+  name: regional32
+  namespace: default
+  annotations:
+    internal.kpt.dev/upstream-identifier: vlan.resource.nephio.org|VLANIndex|default|example-cluster-name
+    nephio.org/cluster-name: regional32
+spec: {}
