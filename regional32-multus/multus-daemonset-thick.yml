@@ -4,6 +4,7 @@ metadata: # kpt-merge: /network-attachment-definitions.k8s.cni.cncf.io
   name: network-attachment-definitions.k8s.cni.cncf.io
   annotations:
     internal.kpt.dev/upstream-identifier: 'apiextensions.k8s.io|CustomResourceDefinition|default|network-attachment-definitions.k8s.cni.cncf.io'
+    nephio.org/cluster-name: regional32
 spec:
   group: k8s.cni.cncf.io
   scope: Namespaced
@@ -44,6 +45,7 @@ metadata: # kpt-merge: /multus
   name: multus
   annotations:
     internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|ClusterRole|default|multus'
+    nephio.org/cluster-name: regional32
 rules:
 - apiGroups: ["k8s.cni.cncf.io"]
   resources:
@@ -76,6 +78,7 @@ metadata: # kpt-merge: /multus
   name: multus
   annotations:
     internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|ClusterRoleBinding|default|multus'
+    nephio.org/cluster-name: regional32
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -92,6 +95,7 @@ metadata: # kpt-merge: kube-system/multus
   namespace: kube-system
   annotations:
     internal.kpt.dev/upstream-identifier: '|ServiceAccount|kube-system|multus'
+    nephio.org/cluster-name: regional32
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -103,6 +107,7 @@ metadata: # kpt-merge: kube-system/multus-daemon-config
     app: multus
   annotations:
     internal.kpt.dev/upstream-identifier: '|ConfigMap|kube-system|multus-daemon-config'
+    nephio.org/cluster-name: regional32
 data:
   daemon-config.json: |
     {
@@ -127,6 +132,7 @@ metadata: # kpt-merge: kube-system/kube-multus-ds
     name: multus
   annotations:
     internal.kpt.dev/upstream-identifier: 'apps|DaemonSet|kube-system|kube-multus-ds'
+    nephio.org/cluster-name: regional32
 spec:
   selector:
     matchLabels:
@@ -139,6 +145,8 @@ spec:
         tier: node
         app: multus
         name: multus
+      annotations:
+        nephio.org/cluster-name: regional32
     spec:
       hostNetwork: true
       hostPID: true
