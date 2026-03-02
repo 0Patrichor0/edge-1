@@ -1,0 +1,26 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /regional32-cluster
+  name: regional32-cluster
+  annotations:
+    config.kubernetes.io/local-config: "true"
+    internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|regional32-cluster'
+upstream:
+  type: git
+  git:
+    repo: https://github.com/nephio-project/catalog.git
+    directory: cluster-capi-kind
+    ref: main
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/nephio-project/catalog.git
+    directory: cluster-capi-kind
+    ref: main
+    commit: 5e1a968e8cbd09a6b930405e38ee6a2ef066c8eb
+info:
+  description: This package provides a blueprint for deploying a capi cluster using the capi kind docker templates
+pipeline:
+  mutators:
+  - image: ghcr.io/kptdev/krm-functions-catalog/apply-replacements:v0.1.1
+    configPath: apply-replacements.yaml
