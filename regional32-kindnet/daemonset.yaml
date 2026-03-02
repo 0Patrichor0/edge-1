@@ -9,6 +9,7 @@ metadata: # kpt-merge: kube-system/kindnet
     k8s-app: kindnet
   annotations:
     internal.kpt.dev/upstream-identifier: 'apps|DaemonSet|kube-system|kindnet'
+    nephio.org/cluster-name: regional32
 spec:
   selector:
     matchLabels:
@@ -19,6 +20,8 @@ spec:
         tier: node
         app: kindnet
         k8s-app: kindnet
+      annotations:
+        nephio.org/cluster-name: regional32
     spec:
       hostNetwork: true
       tolerations:
