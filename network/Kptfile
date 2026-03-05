@@ -1,0 +1,22 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: network
+  annotations:
+    config.kubernetes.io/local-config: "true"
+upstream:
+  type: git
+  git:
+    repo: https://github.com/nephio-project/catalog
+    directory: /distros/sandbox/network
+    ref: main
+  updateStrategy: resource-merge
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/nephio-project/catalog
+    directory: /distros/sandbox/network
+    ref: main
+    commit: 5e1a968e8cbd09a6b930405e38ee6a2ef066c8eb
+info:
+  description: Provisions network prefixes for each network in the package
