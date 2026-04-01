@@ -1,0 +1,21 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /rbac
+  name: rbac
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|rbac'
+upstream:
+  type: git
+  git:
+    repo: https://github.com/0Patrichor0/blueprint.git
+    directory: rbac
+    ref: main
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/0Patrichor0/blueprint.git
+    directory: rbac
+    ref: main
+    commit: 2397f58d391700d2e60a630ba021fb83fae3ae24
+info:
+  description: rbac blueprint for testing
